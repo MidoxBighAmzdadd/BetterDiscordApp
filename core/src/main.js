@@ -36,7 +36,7 @@ const TEST_ARGS = () => {
             'core': path.resolve(_basePath, 'core', 'dist'),
             'data': path.resolve(_baseDataPath, 'data'),
             'editor': path.resolve(_basePath, 'editor', 'dist'),
-            // tmp: path.join(_basePath, 'tmp')
+             tmp: path.join(_basePath, 'tmp')
             tmp: path.join(os.tmpdir(), 'betterdiscord', `${process.getuid()}`)
         }
     }
@@ -73,9 +73,9 @@ class Comms {
 
         BDIpc.on('bd-sendToDiscord', (event, m) => this.sendToDiscord(m.channel, m.message), true);
 
-        // BDIpc.on('bd-openCssEditor', (event, options) => this.bd.csseditor.openEditor(options), true);
-        // BDIpc.on('bd-sendToCssEditor', (event, m) => this.sendToCssEditor(m.channel, m.message), true);
-        // BDIpc.on('bd-openCssEditor', (event, options) => this.bd.editor.openEditor(options), true);
+         BDIpc.on('bd-openCssEditor', (event, options) => this.bd.csseditor.openEditor(options), true);
+         BDIpc.on('bd-sendToCssEditor', (event, m) => this.sendToCssEditor(m.channel, m.message), true);
+         BDIpc.on('bd-openCssEditor', (event, options) => this.bd.editor.openEditor(options), true);
 
         BDIpc.on('bd-native-open', (event, options) => {
             dialog.showOpenDialog(OriginalBrowserWindow.fromWebContents(event.ipcEvent.sender), options, filenames => {
